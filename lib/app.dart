@@ -8,7 +8,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int currentIndex = 1;
+  int _currentIndex = 0;
   final _widgetOptions = [
     Text('Index 0: Home'),
     Text('Index 1: Favorite'),
@@ -17,7 +17,7 @@ class _AppState extends State<App> {
 
   void _onItemTapped(int index) {
     setState(() {
-      currentIndex = index;
+      _currentIndex = index;
     });
   }
 
@@ -26,13 +26,20 @@ class _AppState extends State<App> {
     return Scaffold(
       body: _buildBody(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
+        currentIndex: _currentIndex,
         onTap: _onItemTapped,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('home')),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), title: Text('favorite')),
+          BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('school')),
+        ],
       ),
     );
   }
 
   Widget _buildBody() {
-    return new Text('data');
+    return Center(
+      child: _widgetOptions.elementAt(_currentIndex),
+    );
   }
 }
