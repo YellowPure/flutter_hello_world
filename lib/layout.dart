@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'favorite.dart';
 
 class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -29,8 +30,9 @@ class Layout extends StatelessWidget {
               ],
             ),
           ),
-          new Icon(Icons.star, color: Colors.red[500]),
-          new Text('41')
+          new FavoriteWidget()
+          // new Icon(Icons.star, color: Colors.red[500]),
+          // new Text('41')
         ],
       ),
     );

@@ -1,30 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-// import './layout.dart';
-// import './favorite.dart';
-import './app.dart';
+import 'favorite.dart';
 
-void main() => runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Startup Name Generator',
-      home: new App(),
-      theme: new ThemeData(
-        primaryColor: Colors.blue
-      ),
-    );
-  }
-}
-
-class RandomWords extends StatefulWidget{
+class Home extends StatefulWidget{
   @override
   createState() => new RandomWordsState();
 }
 
-class RandomWordsState extends State<RandomWords> {
+class RandomWordsState extends State<Home> {
   final _suggestions = <WordPair>[];
   final _saved = new Set<WordPair>();
   final TextStyle _biggerFont = const TextStyle(fontSize: 18.0);
@@ -37,21 +20,10 @@ class RandomWordsState extends State<RandomWords> {
       appBar: new AppBar(
         title: new Text('Startup Name Generator'),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.list), onPressed: _pressed,),
-          new IconButton(icon: new Icon(Icons.flag), onPressed: _toLayout,)
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pressed,)
         ],
       ),
       body: _buildSuggestions(),
-    );
-  }
-
-  void _toLayout() {
-    Navigator.of(context).push(
-      new MaterialPageRoute(
-        builder: (context) {
-          // return new Layout();
-        }
-      )
     );
   }
 
@@ -72,7 +44,7 @@ class RandomWordsState extends State<RandomWords> {
             tiles: tiles
           ).toList();
 
-          // return new Favorite('Saved Suggestions', divied);
+          return new Favorite('Saved Suggestions', divied);
           // return new Scaffold(
           //   appBar: new AppBar(
           //     title: new Text('Saved Suggestions'),
@@ -123,5 +95,3 @@ class RandomWordsState extends State<RandomWords> {
     );
   }
 }
-
-
